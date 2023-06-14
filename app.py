@@ -1,5 +1,5 @@
 import streamlit as st
-import transformers import pipeline
+from transformers import pipeline
 
 x = st.slider('Select a value')
 st.write(x, 'squared is', x * x)
