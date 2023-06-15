@@ -15,3 +15,6 @@ st.markdown(
 
 audio_file = st.file_uploader("Upload audio copy of file", key="upload", type=['.mp3'])
 
+
+if audio_file:
+    transcribe_audio(audio_file)
