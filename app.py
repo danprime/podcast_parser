@@ -1,4 +1,6 @@
 import streamlit as st
+import whisper
+import os
 from transformers import pipeline
 
 def transcribe_audio(audiofile):
