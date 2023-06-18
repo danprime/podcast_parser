@@ -13,12 +13,13 @@ def transcribe_audio(audiofile):
     audio_size = round(os.path.getsize(st.session_state['audio'])/(1024*1024),1)
     print(f"audio file size:{audio_size}")
 
-    #determine audio length of file
-    #determine if we need to break up file into chunks
-    if (audio_size > )
+    #determine audio duration
+    podcast = AudioSegment.from_mp3(st.session_state['audio'])
+    st.session_state['audio_segment'] = podcast
+    podcast_duration = podcast.duration_seconds
+    print(f"Audio Duration: {podcast_duration}")
 
-
-    return audio_size
+    return podcast_duration
 
 st.markdown("# Podcast Q&amp;A")
 
