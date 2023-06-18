@@ -28,6 +28,7 @@ def transcribe_audio(audiofile):
     model="openai/whisper-medium",
     chunk_length_s=30,
     device=device,
+    max_new_tokens=60,
     )
 
     transcription = pipe(audiofile, batch_size=8)["text"]
@@ -39,10 +40,16 @@ def transcribe_audio(audiofile):
     return transcription
 
 def summarize_podcast(audiotranscription):
-    sum_pipe = pipeline("summarization",model="philschmid/flan-t5-base-samsum",clean_up_tokenization_spaces=True)
-    summary = ""
+    sum_pipe = pipeline("summarization",model="google/flan-t5-base",clean_up_tokenization_spaces=True)
+    summarized_text = sum_pipe(audiotranscription,
+                               max_length=1000,
+                               min_length=100,
+                               do_sample=False, 
+                               early_stopping=True,
+                              num_beams=4)
+    summarized_text = ' '.join([summ['summary_text'] for summ in summarized_text])
 
-    return summary
+    return summarized_text
     
 
 st.markdown("# Podcast Q&amp;A")
