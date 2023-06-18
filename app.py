@@ -25,7 +25,7 @@ def transcribe_audio(audiofile):
 
     pipe = pipeline(
     "automatic-speech-recognition",
-    model="openai/whisper-medium",
+    model="openai/whisper-small.en",
     chunk_length_s=30,
     device=device,
     max_new_tokens=60,
