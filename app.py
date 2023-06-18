@@ -2,17 +2,21 @@ import streamlit as st
 import whisper
 import os
 from transformers import pipeline
+from pydub import AudioSegment
 
 def transcribe_audio(audiofile):
 
     st.session_state['audio'] = audiofile
-
     print(f"audio_file_session_state:{st.session_state['audio'] }")
 
     #get size of audio file
     audio_size = round(os.path.getsize(st.session_state['audio'])/(1024*1024),1)
-
     print(f"audio file size:{audio_size}")
+
+    #determine audio length of file
+    #determine if we need to break up file into chunks
+    if (audio_size > )
+
 
     return audio_size
 
