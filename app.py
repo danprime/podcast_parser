@@ -1,6 +1,7 @@
 import streamlit as st
 import whisper
 import os
+import * from functions
 from transformers import pipeline
 
 def transcribe_audio(audiofile):
@@ -28,8 +29,11 @@ st.markdown(
         """
         )
 
-audio_file = st.file_uploader("Upload audio copy of file", key="upload", type=['.mp3'])
+if st.button("Process Audio File")
+    transcribe_audio("marketplace-2023-06-14.mp3")
+
+#audio_file = st.file_uploader("Upload audio copy of file", key="upload", type=['.mp3'])
 
 
-if audio_file:
-    transcribe_audio(audio_file)
+# if audio_file:
+#    transcribe_audio(audio_file)
