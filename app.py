@@ -35,9 +35,11 @@ def transcribe_audio(audiofile):
     transcribe_pipe = pipeline(model="facebook/wav2vec2-base-960h")
     transcription = transcribe_pipe(audiofile, chunk_length_s=10, stride_length_s=(4, 2))
 
+    st.session_state['transcription'] = transcription
     print(f"transcription: {transcription}")
+    st.info('Done Transcription')
 
-    return podcast_duration
+    return transcription
 
 st.markdown("# Podcast Q&amp;A")
 
