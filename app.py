@@ -20,11 +20,6 @@ def transcribe_audio(audiofile):
     podcast_duration = podcast.duration_seconds
     print(f"Audio Duration: {podcast_duration}")
 
-    st.info('Breaking podcast into 5 minute chunks.')
-    #break into 5 minute chunks
-    chunk_length_five_minutes = 5 * 60 * 1000
-    podcast_chunks = podcast[::chunk_length_five_minutes]
-
     st.info('Transcribing...')
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
