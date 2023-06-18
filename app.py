@@ -19,6 +19,24 @@ def transcribe_audio(audiofile):
     podcast_duration = podcast.duration_seconds
     print(f"Audio Duration: {podcast_duration}")
 
+    st.info('Breaking podcast into 5 minute chunks.')
+    #break into 5 minute chunks
+    chunk_length_five_minutes = 5 * 60 * 1000
+    podcast_chunks = podcast[::chunk_length_five_minutes]
+
+    st.info('Transcribe')
+
+    #transcriptions = []
+    
+    #for i, chunk in enumerate(podcast_chunks):
+    #    chunk.export(f'output/chunk_{i}.mp4', format='mp4')
+    
+    # following blogpost here: https://huggingface.co/blog/asr-chunking
+    transcribe_pipe = pipeline(model="facebook/wav2vec2-base-960h")
+    transcription = transcribe_pipe(audiofile, chunk_length_s=10, stride_length_s=(4, 2))
+
+    print(f"transcription: {transcription}")
+
     return podcast_duration
 
 st.markdown("# Podcast Q&amp;A")
