@@ -25,7 +25,7 @@ def transcribe_audio(audiofile):
 
     pipe = pipeline(
     "automatic-speech-recognition",
-    model="openai/whisper-large-v2",
+    model="openai/whisper-medium",
     chunk_length_s=30,
     device=device,
     )
@@ -37,6 +37,13 @@ def transcribe_audio(audiofile):
     st.info('Done Transcription')
 
     return transcription
+
+def summarize_podcast(audiotranscription):
+    sum_pipe = pipeline("summarization",model="philschmid/flan-t5-base-samsum",clean_up_tokenization_spaces=True)
+    summary = ""
+
+    return summary
+    
 
 st.markdown("# Podcast Q&amp;A")
 
