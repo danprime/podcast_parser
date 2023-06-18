@@ -20,21 +20,10 @@ def transcribe_audio(audiofile):
     podcast_duration = podcast.duration_seconds
     print(f"Audio Duration: {podcast_duration}")
 
-    st.info('Transcribing...')
-    device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-    pipe = pipeline(
-    "automatic-speech-recognition",
-    model="openai/whisper-small.en",
-    chunk_length_s=30,
-    device=device,
-    max_new_tokens=60,
-    )
-
-    transcription = pipe(audiofile, batch_size=8)["text"]
-
+    whisper_model = whisper.load_model("small.en")
+    transcription = whisper_model.transcribe(audiofile)
     st.session_state['transcription'] = transcription
-    print(f"transcription: {transcription}")
+    print(f"ranscription: {transcription['text']}")
     st.info('Done Transcription')
 
     return transcription
