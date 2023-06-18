@@ -24,7 +24,7 @@ def transcribe_audio(audiofile):
     chunk_length_five_minutes = 5 * 60 * 1000
     podcast_chunks = podcast[::chunk_length_five_minutes]
 
-    st.info('Transcribe')
+    st.info('Transcribing...')
 
     #transcriptions = []
     
