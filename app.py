@@ -50,6 +50,7 @@ st.markdown(
         """
         )
 
+st.audio("marketplace-2023-06-14.mp3") 
 if st.button("Process Audio File"):
     transcribe_audio("marketplace-2023-06-14.mp3")
 
