@@ -1,6 +1,7 @@
 import streamlit as st
 import whisper
 import os
+import torch
 from transformers import pipeline
 from pydub import AudioSegment
 
