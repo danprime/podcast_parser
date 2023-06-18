@@ -25,15 +25,16 @@ def transcribe_audio(audiofile):
     podcast_chunks = podcast[::chunk_length_five_minutes]
 
     st.info('Transcribing...')
+    device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-    #transcriptions = []
-    
-    #for i, chunk in enumerate(podcast_chunks):
-    #    chunk.export(f'output/chunk_{i}.mp4', format='mp4')
-    
-    # following blogpost here: https://huggingface.co/blog/asr-chunking
-    transcribe_pipe = pipeline(model="facebook/wav2vec2-base-960h")
-    transcription = transcribe_pipe(audiofile, chunk_length_s=10, stride_length_s=(4, 2))
+    pipe = pipeline(
+    "automatic-speech-recognition",
+    model="openai/whisper-large-v2",
+    chunk_length_s=30,
+    device=device,
+    )
+
+    transcription = pipe(audiofile, batch_size=8)["text"]
 
     st.session_state['transcription'] = transcription
     print(f"transcription: {transcription}")
