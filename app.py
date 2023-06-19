@@ -2,7 +2,7 @@ import streamlit as st
 import whisper
 import os
 import torch
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModelForTokenClassification, AutoModelForSeq2SeqLM
 from pydub import AudioSegment
 
 def transcribe_audio(audiofile):
