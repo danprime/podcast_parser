@@ -31,9 +31,11 @@ def transcribe_audio(audiofile):
     return transcription
 
 def summarize_podcast(audiotranscription):
+    st.info("Summarizing...")
     summarizer = pipeline("summarization", model="philschmid/flan-t5-base-samsum", device=0)
 
     summarized_text = summarizer(audiotranscription)
+    st.session_state['summary'] = summarized_text
     return summarized_text
     
 
