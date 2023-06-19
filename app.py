@@ -8,9 +8,11 @@ from pydub import AudioSegment
 from nltk import sent_tokenize
 nltk.download('punkt')
 
-
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-
+from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import RetrievalQA
 
 def transcribe_audio(audiofile):
 

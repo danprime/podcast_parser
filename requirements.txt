@@ -3,3 +3,8 @@ transformers
 git+https://github.com/openai/whisper.git
 AudioSegment
 nltk==3.7
+openai
+langchain
+tiktoken
+chromadb
+tabulate
