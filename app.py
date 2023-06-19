@@ -2,6 +2,7 @@ import streamlit as st
 import whisper
 import os
 import torch
+import nltk
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModelForTokenClassification, AutoModelForSeq2SeqLM
 from pydub import AudioSegment
 from nltk import sent_tokenize
