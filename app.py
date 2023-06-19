@@ -100,7 +100,7 @@ if st.button("Process Audio File"):
            ##Summary of Text
         """
         )
-    st.text(podcast_summary)
+    st.text(podcast_summary['summary_text'])
 
 if st.button("Summarize Podcast"):
     with open('transcription.txt', 'r') as file:
@@ -111,7 +111,7 @@ if st.button("Summarize Podcast"):
            ##Summary of Text
         """
         )
-    st.text(podcast_summary)
+    st.text(podcast_summary['summary_text'])
 
 #audio_file = st.file_uploader("Upload audio copy of file", key="upload", type=['.mp3'])
 
