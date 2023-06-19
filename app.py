@@ -94,7 +94,7 @@ if st.button("Process Audio File"):
         st.caption(podcast_text['text']})
     
     #Summarize Text
-    podcast_summary = summarize_podcast(podcast_text)
+    podcast_summary = summarize_podcast(podcast_text['text'])
     st.markdown(
         """
            ##Summary of Text
