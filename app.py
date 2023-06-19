@@ -96,8 +96,8 @@ st.markdown("# Podcast Q&amp;A")
 st.markdown(
         """
         This helps understand information-dense podcast episodes by doing the following:
-        - Speech to Text transcription - using OpenSource Whisper Model
-        - Summarizes the episode
+        - Speech to Text transcription - using OpenSource Whisper Model (small.en)
+        - Summarizes the episode - using philschmid/flan-t5-base-samsum a model based on Google's flan t5
 
         - As a proof of Concept: the Podcast Episode of Marketplace Business News Podcast from NPR on June 14 is used in this codebase.
         - The file is THE ONLY HARDCODED piece of information used in this application.
