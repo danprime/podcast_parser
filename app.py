@@ -93,7 +93,7 @@ def prepare_text_for_qa(audiotranscription):
     revalue = ""
     return revalue
 
-st.markdown("# Podcast Q&amp;A")
+st.markdown("# Podcast Summarizer")
 
 st.markdown(
         """
@@ -103,6 +103,9 @@ st.markdown(
 
         - As a proof of Concept: the Podcast Episode of Marketplace Business News Podcast from NPR on June 14 is used in this codebase.
         - The file is THE ONLY HARDCODED piece of information used in this application.
+
+        - *HOW TO TEST:* Click on "Process Audio File" button
+
         """
         )
 
@@ -118,18 +121,18 @@ if st.button("Process Audio File"):
     podcast_summary = summarize_podcast(podcast_text['text'])
     st.markdown(
         """
-           ##Summary of Text
+           ## Summary of Text
         """
         )
     st.text(podcast_summary)
 
-if st.button("Summarize Podcast"):
-    with open('transcription.txt', 'r') as file:
-        podcast_text = file.read().rstrip()
-    podcast_summary = summarize_podcast(podcast_text)
-    st.markdown(
-        """
-           ##Summary of Text
-        """
-        )
-    st.text(podcast_summary)
+# if st.button("Summarize Podcast"):
+    # with open('transcription.txt', 'r') as file:
+        # podcast_text = file.read().rstrip()
+    # podcast_summary = summarize_podcast(podcast_text)
+    # st.markdown(
+        # """
+           # ## Summary of Text
+        # """
+        # )
+    # st.text(podcast_summary)
