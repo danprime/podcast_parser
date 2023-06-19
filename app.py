@@ -5,6 +5,8 @@ import torch
 from transformers import pipeline, AutoTokenizer, AutoModelForSequenceClassification, AutoModelForTokenClassification, AutoModelForSeq2SeqLM
 from pydub import AudioSegment
 from nltk import sent_tokenize
+nltk.download('punkt')
+
 
 def transcribe_audio(audiofile):
 
