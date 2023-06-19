@@ -82,7 +82,9 @@ def summarize_podcast(audiotranscription):
     summarized_text = summarizer(text_chunks)
     st.session_state['summary'] = summarized_text
     print(f"Summary: {summarized_text}")
-    return summarized_text
+    #summarized_text is an array of objects with key summary_text
+    full_summary = ' '.join(item['summary_text'] for item in summarized_text)
+    return full_summary
 
 def prepare_text_for_qa(audiotranscription):
 
@@ -119,7 +121,7 @@ if st.button("Process Audio File"):
            ##Summary of Text
         """
         )
-    st.text(podcast_summary['summary_text'])
+    st.text(podcast_summary)
 
 if st.button("Summarize Podcast"):
     with open('transcription.txt', 'r') as file:
@@ -130,4 +132,4 @@ if st.button("Summarize Podcast"):
            ##Summary of Text
         """
         )
-    st.text(podcast_summary['summary_text'])
+    st.text(podcast_summary)
