@@ -67,7 +67,7 @@ if st.button("Process Audio File"):
 
 if st.button("Summarize Podcast"):
     with open('transcription.txt', 'r') as file:
-        podcast_summary = file.read().rstrip()
+        podcast_text = file.read().rstrip()
     podcast_summary = summarize_podcast(podcast_text)
     st.markdown(
         """
