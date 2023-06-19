@@ -54,7 +54,7 @@ if st.button("Process Audio File"):
     podcast_text = transcribe_audio("marketplace-2023-06-14.mp3")
     #write text out
     with st.expander("See Transcription"):
-        st.caption(podcast_text)
+        st.caption(podcast_text['text']})
     
     #Summarize Text
     podcast_summary = summarize_podcast(podcast_text)
