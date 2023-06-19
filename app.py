@@ -34,7 +34,7 @@ def transcribe_audio(audiofile):
     whisper_model = whisper.load_model("small.en")
     transcription = whisper_model.transcribe(audiofile)
     st.session_state['transcription'] = transcription
-    print(f"ranscription: {transcription['text']}")
+    print(f"transcription: {transcription['text']}")
     st.info('Done Transcription')
 
     return transcription
@@ -81,6 +81,7 @@ def summarize_podcast(audiotranscription):
     #summarized_text = summarizer(text_chunks, max_len=200,min_len=50)
     summarized_text = summarizer(text_chunks)
     st.session_state['summary'] = summarized_text
+    print(f"Summary: {summarized_text}")
     return summarized_text
 
 def prepare_text_for_qa(audiotranscription):
