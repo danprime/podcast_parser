@@ -84,9 +84,12 @@ st.markdown(
         - Summarizes the episode
         - Allows you to ask questions and returns direct quotes from the episode.
 
+        - As a proof of Concept: the Podcast Episode of Marketplace Business News Podcast from NPR on June 14 is used in this codebase.
+        - The file is THE ONLY HARDCODED piece of information used in this application.
         """
         )
 
+st.text("Marketplace Episode June 14 2023")
 st.audio("marketplace-2023-06-14.mp3") 
 if st.button("Process Audio File"):
     podcast_text = transcribe_audio("marketplace-2023-06-14.mp3")
