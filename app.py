@@ -65,6 +65,17 @@ if st.button("Process Audio File"):
         )
     st.text(podcast_summary)
 
+if st.button("Summarize Podcast"):
+    with open('transcription.txt', 'r') as file:
+        podcast_summary = file.read().rstrip()
+    podcast_summary = summarize_podcast(podcast_text)
+    st.markdown(
+        """
+           ##Summary of Text
+        """
+        )
+    st.text(podcast_summary)
+
 #audio_file = st.file_uploader("Upload audio copy of file", key="upload", type=['.mp3'])
 
 
