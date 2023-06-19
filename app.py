@@ -9,6 +9,9 @@ from nltk import sent_tokenize
 nltk.download('punkt')
 
 
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+
 def transcribe_audio(audiofile):
 
     st.session_state['audio'] = audiofile
@@ -73,10 +76,17 @@ def summarize_podcast(audiotranscription):
     st.info("Chunking text")
     text_chunks = chunk_and_preprocess_text(audiotranscription)
 
-    summarized_text = summarizer(text_chunks, max_len=200,min_len=50)
+    #summarized_text = summarizer(text_chunks, max_len=200,min_len=50)
+    summarized_text = summarizer(text_chunks)
     st.session_state['summary'] = summarized_text
     return summarized_text
-    
+
+def prepare_text_for_qa(audiotranscription):
+
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=20)
+    documents = text_splitter.split_documents(audiotranscription)
+    revalue = ""
+    return revalue
 
 st.markdown("# Podcast Q&amp;A")
 
